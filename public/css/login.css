@@ -9,13 +9,17 @@ html,body{
     height: 100%;   
     position: relative;
     background-color:#FFFAD3;
+    background-image: url('/images/home/login/background.webp');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -moz-background-size:100% 100%;  
 }
 
 .login-panel{
 	width: 800px;
 	height: 600px;
 	position: absolute;
-	top: 50%;
+	top: 68%;
 	left: 50%;
 	margin-top: -150px;
 	margin-left: -400px;
