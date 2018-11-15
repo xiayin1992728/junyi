@@ -138,14 +138,24 @@
 	width: 90%;
 	margin:0;
 	border-radius: 50%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .yuantu .day {
-
+	width:20%;
+	height:20%;
+	margin-top: 4vh;
+    font-size: 1.5em;
+    border-radius: 50%;
+    color: #808080;
 }
 
 .yuantu .num {
-	
+	font-size: 5em;
+    letter-spacing: 0.2em;
+    color: #808080;
 }
 
 .btnj {
