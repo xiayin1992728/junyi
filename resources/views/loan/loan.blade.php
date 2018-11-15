@@ -5,7 +5,7 @@
 @section('css')
 <style type="text/css">
 .container-full {
-	margin:0 -15px;
+
 }
 .zimu {
 	color: #808080;
@@ -16,7 +16,6 @@
 }
 
 .sum {
-	margin:0 -15px;
 	height:30vh;
 	background: url('/images/home/loan/background.png');
 	background-repeat: no-repeat;
@@ -47,11 +46,12 @@
 	display: flex;
 	flex-direction: row;
 	box-shadow: 0 5px 5px #888888;
+	position: relative;
 }
 
 .bar .left {
 	height:10px;
-	width: 49%;
+	width: 47%;
 	border-radius: 5px;
 	background: #FAB051;
 }
@@ -62,20 +62,24 @@
 	background-size: 100% 100%;
 	height:30px;
 	width:30px;
-	position: relative;
-	left:-2%;
+	position: absolute;
+	left:44%;
 	top:-10px;
+	cursor: pointer;
 }
 
-.icon .tishikuang {
+.bar .icon .tishikuang {
 	width:15vw;
 	height:7vh;
+	line-height: 6vh;
 	background: url('/images/home/loan/duobian.webp');
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
-	position: relative;
-	top:-41px;
-	left: 2px;
+	position: absolute;
+	top:-40px;
+	left: -6%;
+	color: white;
+	text-align: center;
 }
 
 .shuru {
@@ -128,6 +132,17 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	position: relative;
+}
+
+.yuan .anniu {
+	background: url('/images/home/loan/anniu.png');
+	background-repeat:no-repeat;
+	background-size: 100% 100%;
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	top:-13px;
 }
 
 .yuan .yuantu {
@@ -147,15 +162,15 @@
 	width:20%;
 	height:20%;
 	margin-top: 4vh;
-    font-size: 1.5em;
-    border-radius: 50%;
-    color: #808080;
+	font-size: 1.5em;
+	border-radius: 50%;
+	color: #808080;
 }
 
 .yuantu .num {
 	font-size: 5em;
-    letter-spacing: 0.2em;
-    color: #808080;
+	letter-spacing: 0.2em;
+	color: #808080;
 }
 
 .btnj {
@@ -190,7 +205,7 @@
 			<div class="left"></div>
 			<div class="icon">
 				<div class="tishikuang">
-					
+					50000	
 				</div>
 			</div>
 		</div>
@@ -211,6 +226,7 @@
 	<p class="text-center">借款期限</p>	
 	<div class="zhuanshi">
 		<div class="yuan">
+			<div class="anniu"></div>
 			<div class="yuantu">
 				<div class="day">Day</div>
 				<div class="num">14</div>
@@ -230,6 +246,81 @@
 
 @section('script')
 <script type="text/javascript">
+	window.onload = function() {
 
+        var lineDiv = document.getElementsByClassName('bar')[0]; //长线条
+        var minDiv = document.getElementsByClassName('icon')[0]; //小方块
+        var vals = document.getElementsByClassName("tishikuang")[0];
+        var left = document.getElementsByClassName('left')[0];
+        var ifBool = false; //判断鼠标是否按下
+        var yuanDiv = document.getElementsByClassName('yuan')[0];
+        var anniuDiv = document.getElementsByClassName('anniu')[0];
+        
+
+        //事件
+        var start = function(e) {
+        	e.stopPropagation();
+        	ifBool = true;
+        	console.log("鼠标按下")
+        }
+        var move = function(e) {
+        	console.log("鼠标拖动")
+        	if(ifBool) {
+            if(!e.touches) {  //兼容移动端
+            	var x = e.clientX;
+            } else {   //兼容PC端
+            	var x = e.touches[0].pageX;
+            }
+            //var x = e.touches[0].pageX || e.clientX; //鼠标横坐标var x
+            var lineDiv_left = getPosition(lineDiv).left; //长线条的横坐标
+            var minDiv_left = x - lineDiv_left; //小方块相对于父元素（长线条）的left值 
+            if(minDiv_left >= lineDiv.offsetWidth - 15) {
+            	minDiv_left = lineDiv.offsetWidth - 15;
+            }
+            if(minDiv_left < 0) {
+            	minDiv_left = 0;
+            }
+            //设置拖动后小方块的left值
+            minDiv.style.left = minDiv_left + "px";
+            console.log(minDiv_left);
+            //msg.innerText = parseInt((minDiv_left / (lineDiv.offsetWidth - 15)) * 100);
+            vals.innerText = parseInt((minDiv_left / (lineDiv.offsetWidth - 15)) * 100000);
+            left.style.width = parseInt((minDiv_left / (lineDiv.offsetWidth - 15)) * 100) + '%';
+        }
+
+
+    }
+
+    var end = function(e) {
+    	console.log("鼠标弹起")
+    	ifBool = false;
+    }
+          //鼠标按下方块
+          minDiv.addEventListener("touchstart", start);
+          minDiv.addEventListener("mousedown", start);
+        //拖动
+        window.addEventListener("touchmove", move);
+        window.addEventListener("mousemove", move);
+        //鼠标松开
+        window.addEventListener("touchend", end);
+        window.addEventListener("mouseup", end);
+        //获取元素的绝对位置
+        function getPosition(node) {
+          var left = node.offsetLeft; //获取元素相对于其父元素的left值var left
+          var top = node.offsetTop;
+          current = node.offsetParent; // 取得元素的offsetParent
+          　 // 一直循环直到根元素
+          　　
+          while(current != null) {　　
+          	left += current.offsetLeft;　　
+          	top += current.offsetTop;　　
+          	current = current.offsetParent;　　
+          }
+          return {
+          	"left": left,
+          	"top": top
+          };
+      }
+  }
 </script>
 @endsection
