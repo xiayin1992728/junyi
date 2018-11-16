@@ -3,6 +3,7 @@
 @section('title','贷款')
 
 @section('css')
+<link href="https://cdn.bootcss.com/roundSlider/1.3.2/roundslider.css" rel="stylesheet">
 <style type="text/css">
 .container-full {
 
@@ -123,55 +124,6 @@
 	align-items: center;
 }
 
-.days .yuan {
-	width: 40vh;
-	height: 40vh;
-	border-radius: 50%;
-	border:1px solid #D0D0D0;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	position: relative;
-}
-
-.yuan .anniu {
-	background: url('/images/home/loan/anniu.png');
-	background-repeat:no-repeat;
-	background-size: 100% 100%;
-	position: absolute;
-	width: 30px;
-	height: 30px;
-	top:-13px;
-}
-
-.yuan .yuantu {
-	background: url('/images/home/loan/yuan.png');
-	background-repeat:no-repeat;
-	background-size: 100% 100%;
-	height: 90%;
-	width: 90%;
-	margin:0;
-	border-radius: 50%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
-.yuantu .day {
-	width:20%;
-	height:20%;
-	margin-top: 4vh;
-	font-size: 1.5em;
-	border-radius: 50%;
-	color: #808080;
-}
-
-.yuantu .num {
-	font-size: 5em;
-	letter-spacing: 0.2em;
-	color: #808080;
-}
 
 .btnj {
 	margin-top: 3vh;
@@ -190,6 +142,38 @@
 	letter-spacing: 0.2em;
 	font-size: 1.2em;
 	box-shadow: 0px 5px 5px #888888;
+}
+
+
+#slider .rs-range-color  {
+    background-color: #ff8d00;
+}
+#slider .rs-handle:after  {
+    background-color: #000000;
+}
+
+#slider .rs-path-color  {
+    background-color: #939393;
+}
+
+#slider .rs-tooltip-text {
+	color:#808080;
+	font-weight: 900;
+	font-size: 1.7em;
+}
+
+.rs-inner {
+	background: url('/images/home/loan/yuan.png');
+	background-repeat:no-repeat;
+	background-size: 100% 100%;
+}
+
+.tianshu {
+	position: absolute;
+	z-index: 1000;
+	top:45px;
+	left:85px;
+	color: #808080;
 }
 </style>
 @endsection
@@ -225,13 +209,8 @@
 <div class="days col-md-12">
 	<p class="text-center">借款期限</p>	
 	<div class="zhuanshi">
-		<div class="yuan">
-			<div class="anniu"></div>
-			<div class="yuantu">
-				<div class="day">Day</div>
-				<div class="num">14</div>
-			</div>
-		</div>
+
+		<div id="slider"></div>
 
 		<div class="btnj">
 			<input type="submit" name="" value="马上借">
@@ -245,6 +224,7 @@
 @endsection
 
 @section('script')
+<script src="https://cdn.bootcss.com/roundSlider/1.3.2/roundslider.js"></script>
 <script type="text/javascript">
 	window.onload = function() {
 
@@ -253,9 +233,6 @@
         var vals = document.getElementsByClassName("tishikuang")[0];
         var left = document.getElementsByClassName('left')[0];
         var ifBool = false; //判断鼠标是否按下
-        var yuanDiv = document.getElementsByClassName('yuan')[0];
-        var anniuDiv = document.getElementsByClassName('anniu')[0];
-        
 
         //事件
         var start = function(e) {
@@ -287,8 +264,6 @@
             vals.innerText = parseInt((minDiv_left / (lineDiv.offsetWidth - 15)) * 100000);
             left.style.width = parseInt((minDiv_left / (lineDiv.offsetWidth - 15)) * 100) + '%';
         }
-
-
     }
 
     var end = function(e) {
@@ -299,11 +274,11 @@
           minDiv.addEventListener("touchstart", start);
           minDiv.addEventListener("mousedown", start);
         //拖动
-        window.addEventListener("touchmove", move);
-        window.addEventListener("mousemove", move);
+        minDiv.addEventListener("touchmove", move);
+        minDiv.addEventListener("mousemove", move);
         //鼠标松开
-        window.addEventListener("touchend", end);
-        window.addEventListener("mouseup", end);
+        minDiv.addEventListener("touchend", end);
+        minDiv.addEventListener("mouseup", end);
         //获取元素的绝对位置
         function getPosition(node) {
           var left = node.offsetLeft; //获取元素相对于其父元素的left值var left
@@ -322,5 +297,19 @@
           };
       }
   }
+
+  $("#slider").roundSlider({
+    radius: 100,
+    width: 15,
+    handleSize: "+8",
+    handleShape: "dot",
+    sliderType: "min-range",
+    value: 180,
+    min:0,
+    max:365,
+});
+
+$('.rs-tooltip-text').before('<strong class="tianshu">day</strong>')  
+ 
 </script>
 @endsection
