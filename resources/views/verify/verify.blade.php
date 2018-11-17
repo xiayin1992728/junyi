@@ -8,7 +8,7 @@
 	display: flex;
 	flex-direction: column;
 	margin:0 5vh;
-	height: 80vh;
+	height: 125vw;
 }
 
 .fangshi {

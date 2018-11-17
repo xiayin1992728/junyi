@@ -16,7 +16,7 @@ Route::get('feature','FeatureController@featurePage')->name('feature');
 Route::get('continue','ContinueController@continuePage')->name('continue');
 
 // 秒借
-Route::get('second','SecondController@secondPage')->name('continue');
+Route::get('second','SecondController@secondPage')->name('second');
 
 // 发现
 Route::get('find','FindController@findPage')->name('find');

@@ -76,6 +76,7 @@
 .userother div {
 	color: #B5B5B5;
 	margin-top: 5px;
+	font-size: 1.2em;
 }
 
 .buttom {
@@ -84,15 +85,23 @@
 }
 
 .tiao_list {
-	height: 40px;
+	height: 60px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
+	padding-right: 25px;
+	color: #B1B1B1;
+	border-bottom: 1px solid #D5D5D5;
 }
 
 .tiao_list span {
-
+	display: inline-block;
+	width:10px;
+	height: 15px;
+	background-image:url('/images/home/user/point.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
 }
 
 .tiao_name {
@@ -105,14 +114,23 @@
 .tiao_name div {
 	width: 20px;
 	height: 20px;
+	margin-right: 15px;
 }
 
 .tiao strong {
 
 }
 
-.look {
+.look div {
+	background-image:url('/images/home/user/look.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
 
+.about div {
+	background-image:url('/images/home/user/about.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
 }
 </style>
 @endsection
@@ -137,6 +155,14 @@
 			<div class="tiao_name look">
 				<div></div>
 				<strong>浏览记录</strong>
+			</div>
+			<span></span>
+		</div>
+
+		<div class="tiao_list">
+			<div class="tiao_name about">
+				<div></div>
+				<strong>关于我们</strong>
 			</div>
 			<span></span>
 		</div>
