@@ -10,7 +10,7 @@
 .large {
 	width:100vw;
 	padding: 70vh 10vw 0 10vw;
-	background: url('/images/home/login/background.webp');
+	background: url('/images/home/login/background.png');
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 }
