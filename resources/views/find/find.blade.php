@@ -11,7 +11,7 @@
 	background: #F4F4F4;
 }
 .findbackground {
-	background: url('/images/home/find/background.webp') no-repeat;
+	background: url('/images/home/find/find.png') no-repeat;
 	background-size: 100% 100%;
 	width:100vw;
 	height: 35vh;

@@ -58,7 +58,7 @@
 }
 
 .bar .icon {
-	background: url('/images/home/loan/yuan.webp');
+	background: url('/images/home/loan/change.png');
 	background-repeat: no-repeat; 
 	background-size: 100% 100%;
 	height:30px;
@@ -73,7 +73,7 @@
 	width:15vw;
 	height:7vh;
 	line-height: 6vh;
-	background: url('/images/home/loan/duobian.webp');
+	background: url('/images/home/loan/duo.png');
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	position: absolute;
