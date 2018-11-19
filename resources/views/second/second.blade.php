@@ -245,7 +245,7 @@ body {
 		</div>
 	</div>
 </div>
-
+	@include('layouts._menu')
 @endsection
 
 @section('script')

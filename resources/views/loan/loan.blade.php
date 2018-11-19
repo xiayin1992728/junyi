@@ -207,13 +207,19 @@
 </div>
 
 <div class="days col-md-12">
+	{{ $errors->first('money') }}
 	<p class="text-center">借款期限</p>	
 	<div class="zhuanshi">
 
 		<div id="slider"></div>
 
 		<div class="btnj">
-			<input type="submit" name="" value="马上借">
+			<form action="{{ route('loan') }}" method="POST">
+				{{ csrf_field()  }}
+				<input type="hidden" name="money" value="" id="money">
+				<input type="hidden" name="days" value="" id="days">
+				<input type="submit" name="" value="马上借" id="mashangjie">
+			</form>
 		</div>
 	</div>
 </div>
@@ -309,7 +315,12 @@
     max:365,
 });
 
-$('.rs-tooltip-text').before('<strong class="tianshu">day</strong>')  
- 
+$('.rs-tooltip-text').before('<strong class="tianshu">day</strong>');
+
+$('#mashangjie').on('click',function () {
+	$("#money").val(parseInt($('.tishikuang').text()));
+	$('#days').val($('.rs-tooltip').text());
+})
+
 </script>
 @endsection

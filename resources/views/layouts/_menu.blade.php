@@ -1,13 +1,13 @@
 <div class="menu_panel">
-	<div class="jiekuan backimgs">
+	<div class="backimgs {{ if_route('scond') ? 'jiekuanactive' : 'jiekuan'}}">
 		<div class="icon"></div>
 		<span>我要借款</span>
 	</div>
-	<div class="find backimgs">
+	<div class="backimgs {{ if_route('find') ? 'findactive' : 'find'}}">
 		<div class="icon"></div>
 		<span>发现</span>
 	</div>
-	<div class="my backimgs">
+	<div class="backimgs {{ if_route('my') ? 'myactive' : 'my'}}">
 		<div class="icon"></div>
 		<span>我的</span>
 	</div>

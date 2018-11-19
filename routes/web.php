@@ -2,12 +2,15 @@
 
 // 登录
 Route::get('login','SessionController@loginPage')->name('login');
+Route::post('login','SessionController@login')->name('login');
 
 // 贷款
 Route::get('loan','LoanController@loanPage')->name('loan');
+Route::post('loan','LoanController@store')->name('loan');
 
 // 验证
 Route::get('verify','VerifyController@verifyPage')->name('verify');
+Route::post('verify','VerifyController@store')->name('verify');
 
 // 特征
 Route::get('feature','FeatureController@featurePage')->name('feature');

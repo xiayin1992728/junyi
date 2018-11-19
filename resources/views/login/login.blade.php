@@ -75,22 +75,23 @@
 @section('content')
 <div class="large">
 	<div class="login-panel">
-		<form>
-			<div class="form-group -has-success shu">
-				<input type="text" placeholder="请输入手机号" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
+		<form action="{{ route('login') }}" method="POST">
+			{{ csrf_field() }}
+			<div class="form-group shu {{ $errors->first('phone') ? 'has-error' : ''}}">
+				<input type="text" placeholder="请输入手机号" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status" name="phone">
 			</div>
 
-			<div class="form-group -has-success getCode">
-				<input type="text" placeholder="请输入校检码" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
+			<div class="form-group getCode {{ $errors->first('verify') ? 'has-error' : ''}}">
+				<input type="text" placeholder="请输入校检码" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status" name="verify">
 				<p>3241</p>
 			</div>
 
-			<div class="form-group -has-success getCode">
-				<input type="text" placeholder="请输入验证码" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
+			<div class="form-group getCode {{ $errors->first('code') ? 'has-error' : ''}}">
+				<input type="text" placeholder="请输入验证码" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status" name="code">
 				<button class="btn">获取验证码</button>
 			</div>
 
-			<input type="submit" class="shenqi" name="" value="立即申请">
+			<input type="submit" class="shenqi" value="立即申请">
 		</form>
 		<p class="text-center" style="font-size: 0.6em;margin-top: 2vh;color: #FF864C">点击"立即申请"即代表同意 《新用户注册协议》</p>
 	</div>

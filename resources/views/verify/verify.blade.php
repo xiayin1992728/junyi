@@ -138,6 +138,7 @@ input::-webkit-input-placeholder {
 @endsection
 
 @section('content')
+	<form action="{{ route('verify') }}" method="POST">
 <div class="wenzi">
 	<!-- 验证方式 -->
 	<div class="fangshi">
@@ -145,103 +146,100 @@ input::-webkit-input-placeholder {
 		<p>②身份验证</p>
 		<p>③智能验证</p>
 	</div>
-	<!-- 信息 -->
-	<div class="info">
-		<div class="wai name">
-			<div class="icon"></div>
-			<div>
-				<input type="text" placeholder="请输入你的姓名" name="name">
+
+		{{ csrf_field() }}
+		<!-- 信息 -->
+		<div class="info">
+			<div class="wai name">
+				<div class="icon"></div>
+				<div>
+					<input type="text" placeholder="请输入你的姓名" name="name" value="{{ old('name') }}">
+				</div>
+			</div>
+			<div class="wai idCard">
+				<div class="icon"></div>
+				<div>
+					<input type="text" placeholder="请输入你的身份证号" name="idcard" value="{{ old('idcard') }}">
+				</div>
+			</div>
+			<div class="wai zhimafen">
+				<div class="icon"></div>
+				<div>
+					<input type="text" placeholder="请输入芝麻分" name="credit" value="{{ old('credit') }}">
+				</div>
+			</div>
+			<div class="wai qq">
+				<div class="icon"></div>
+				<div>
+					<input type="text" placeholder="请输入 QQ 号" name="qq" value="{{ old('qq') }}">
+				</div>
+			</div>
+			<div class="wai weixin">
+				<div class="icon"></div>
+				<div>
+					<input type="text" placeholder="请输入你的微信号" name="weixin" value="{{ old('weixin') }}">
+				</div>
 			</div>
 		</div>
-		<div class="wai idCard">
-			<div class="icon"></div>
-			<div>
-				<input type="text" placeholder="请输入你的身份证号" name="idCard">
+
+		<!-- 选填信息 -->
+		<div class="change">
+			<div class="work common">
+				<p>有无工作(选填)</p>
+				<div>
+					<span>有</span><input type="radio" name="work" value="1">
+				</div>
+				<div>
+					<span>无</span><input type="radio" name="work" value="0">
+				</div>
 			</div>
-		</div>
-		<div class="wai zhimafen">
-			<div class="icon"></div>
-			<div>
-				<input type="text" placeholder="请输入芝麻分" name="zhimafen">
+			<div class="house common">
+				<p>有无房产(选填)</p>
+				<div>
+					<span>有</span><input type="radio" name="house" value="1">
+				</div>
+				<div>
+					<span>无</span><input type="radio" name="house" value="0">
+				</div>
 			</div>
-		</div>
-		<div class="wai qq">
-			<div class="icon"></div>
-			<div>
-				<input type="text" placeholder="请输入 QQ 号" name="qq">
+			<div class="card common">
+				<p>有无车产(选填)</p>
+				<div>
+					<span>有</span><input type="radio" name="card" value="1">
+				</div>
+				<div>
+					<span>无</span><input type="radio" name="card" value="0">
+				</div>
 			</div>
-		</div>
-		<div class="wai weixin">
-			<div class="icon"></div>
-			<div>
-				<input type="text" placeholder="请输入你的微信号" name="weixin">
+			<div class="gongjijin common">
+				<p>有无公积金(选填)</p>
+				<div>
+					<span>有</span><input type="radio" name="accumulation" value="1">
+				</div>
+				<div>
+					<span>无</span><input type="radio" name="accumulation" value="0">
+				</div>
 			</div>
-		</div>
-		<div class="wai money">
-			<div class="icon"></div>
-			<div>
-				<input type="text" placeholder="您要贷款的金额 1000~6000 元" name="money">
+			<div class="shebao common">
+				<p>有无社保(选填)</p>
+				<div>
+					<span>有</span><input type="radio" name="insurance" value="1">
+				</div>
+				<div>
+					<span>无</span><input type="radio" name="insurance" value="0">
+				</div>
 			</div>
 		</div>
 	</div>
 
-	<!-- 选填信息 -->
-	<div class="change">
-		<div class="work common">
-			<p>有无工作(选填)</p>
-			<div>
-				<span>有</span><input type="radio" name="work">
-			</div>
-			<div>
-				<span>无</span><input type="radio" name="work">
-			</div>
-		</div>
-		<div class="house common">
-			<p>有无房产(选填)</p>
-			<div>
-				<span>有</span><input type="radio" name="house">
-			</div>
-			<div>
-				<span>无</span><input type="radio" name="house">
-			</div>
-		</div>
-		<div class="card common">
-			<p>有无车产(选填)</p>
-			<div>
-				<span>有</span><input type="radio" name="card">
-			</div>
-			<div>
-				<span>无</span><input type="radio" name="card">
-			</div>
-		</div>
-		<div class="gongjijin common">
-			<p>有无公积金(选填)</p>
-			<div>
-				<span>有</span><input type="radio" name="gongjijin">
-			</div>
-			<div>
-				<span>无</span><input type="radio" name="gongjijin">
-			</div>
-		</div>
-		<div class="shebao common">
-			<p>有无工作(选填)</p>
-			<div>
-				<span>有</span><input type="radio" name="shebao">
-			</div>
-			<div>
-				<span>无</span><input type="radio" name="shebao">
-			</div>
-		</div>
+	<div class="btns">
+		<input type="submit" value="提交">
 	</div>
-</div>
-
-<div class="btns">
-	<input type="submit" name="" value="提交">
-</div>
 
 <div class="bgk">
 	
 </div>
+</form>
 @endsection
 
 @section('script')

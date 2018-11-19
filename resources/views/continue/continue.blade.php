@@ -66,7 +66,7 @@
 	</div>
 
 	<div class="footer">
-		<input type="submit" name="" value="继续借">
+		<input type="submit" id="continue" value="继续借">
 		<p class="text-center">借款金额和期限以当天实际借款为准</p>
 	</div>
 
@@ -74,5 +74,9 @@
 @endsection
 
 @section('script')
-
+<script type="text/javascript">
+	$('#continue').on('click',function() {
+		window.location.href = '{{ route('second') }}'
+	})
+</script>
 @endsection
