@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Models\User;
 use App\Http\Requests\VerifyRequest;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class VerifyController extends Controller
 
     public function store(VerifyRequest $request)
     {
-        $user = User::where('id',session('user')->id)->first();
+        $user = User::where('id',Auth::id())->first();
     	$user->name = $request->name;
     	$user->idcard = $request->idcard;
     	$user->credit = $request->credit;
