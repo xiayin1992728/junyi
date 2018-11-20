@@ -78,7 +78,7 @@
         <form action="{{ route('login') }}" method="POST">
             {{ csrf_field() }}
             <div class="form-group shu {{ $errors->first('phone') ? 'has-error' : ''}}">
-                <input type="text" placeholder="请输入手机号" class="form-control" id="phone" aria-describedby="inputSuccess2Status" name="phone">
+                <input type="text" placeholder="请输入手机号" class="form-control" id="phone" aria-describedby="inputSuccess2Status" name="phone" value="{{ old('phone') }}">
             </div>
 
             <div class="form-group getCode {{ $errors->first('captcha') ? 'has-error' : ''}}">
@@ -113,9 +113,11 @@
                 success:function(res) {
                     console.log(res.errors);
                     if (res.errors != undefined) {
-                        
+                        $('#key').val(localStorage.getItem('key'));
+
                     } else {
                         $('#key').val(res.key);
+                        localStorage.setItem('key',res.key);
                     }
                 }
             })
