@@ -3,6 +3,7 @@
 // 登录
 Route::get('/','HomeController@index')->name('login');
 Route::post('login','HomeController@store')->name('login');
+Route::post('code','HomeController@message')->name('code');
 
 // 贷款
 Route::get('loan','LoanController@loanPage')->name('loan');

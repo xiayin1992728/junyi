@@ -24,8 +24,11 @@ class loginRequest extends FormRequest
     public function rules()
     {
         return [
-            'phone' => 'required|max:11',
-            'verify' => 'required|max:4',
+            'phone' => [
+                'required',
+                'regex:/^((13[0-9])|(14[5,7,9])|(15[^4])|(18[0-9])|(17[0,1,3,5,6,7,8]))\d{8}$/'
+            ],
+            'captcha' => 'required|captcha',
             'code' => 'required|numeric',
         ];
     }
