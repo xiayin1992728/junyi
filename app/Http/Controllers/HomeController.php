@@ -45,12 +45,13 @@ class HomeController extends Controller
     // 用户登录
     public function store (loginRequest $request,User $user)
     {
-        $verifyData = \Cache::get($key);
+        $verifyData = \Cache::get($request->key);
+        //dd($verifyData);
         if (!$verifyData) {
             return response(['errors' => '验证码过期']);
         }
 
-        if (!hash_equals($verifyData['code'], $request->verification_code)) {
+        if (!hash_equals($verifyData['code'], $request->code)) {
             return response(['errors' => '验证码错误']);
         }
 

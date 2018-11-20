@@ -90,7 +90,7 @@
                 <input type="text" placeholder="请输入验证码" class="form-control" id="code" aria-describedby="inputSuccess2Status" name="code">
                 <span class="btn" id="captchabtn">获取验证码</span>
             </div>
-
+            <input type="hidden" name="key" value="" id="key">
             <input type="submit" class="shenqi" value="立即申请">
         </form>
         <p class="text-center" style="font-size: 0.6em;margin-top: 2vh;color: #FF864C">点击"立即申请"即代表同意 《新用户注册协议》</p>
@@ -111,7 +111,12 @@
                     captcha:$('#captcha').val()
                 },
                 success:function(res) {
-                    console.log(res);
+                    console.log(res.errors);
+                    if (res.errors != undefined) {
+                        
+                    } else {
+                        $('#key').val(res.key);
+                    }
                 }
             })
        });

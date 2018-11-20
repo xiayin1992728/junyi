@@ -30,6 +30,7 @@ class loginRequest extends FormRequest
             ],
             'captcha' => 'required|captcha',
             'code' => 'required|numeric',
+            'key' => 'required'
         ];
     }
 }
