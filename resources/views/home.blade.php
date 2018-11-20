@@ -113,7 +113,7 @@
                 success:function(res) {
                     console.log(res.errors);
                     if (res.errors != undefined) {
-                        $('#key').val(localStorage.getItem('key'));
+                        
 
                     } else {
                         $('#key').val(res.key);
@@ -126,5 +126,9 @@
        $('.getCode img').on('click',function(){
             $(this).attr('src','captcha/mini?'+Math.random());
        });
+
+       if (localStorage.getItem('key')) {
+            $('#key').val(localStorage.getItem('key'));
+       }
     </script>
 @endsection
