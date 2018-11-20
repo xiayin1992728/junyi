@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Models\Money;
 use App\Http\Requests\LoanRequest;
 use Illuminate\Http\Request;
 
 class LoanController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
+
     public function loanPage()
     {
     	return view('loan.loan');
@@ -18,7 +24,7 @@ class LoanController extends Controller
     {
        $money->days = $request->days;
        $money->money = $request->money;
-       $money->uid = session('user')->id;
+       $money->uid = Auth::id();
 
        $money->save();
 

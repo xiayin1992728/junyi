@@ -1,8 +1,8 @@
 <?php
 
 // 登录
-Route::get('login','SessionController@loginPage')->name('login');
-Route::post('login','SessionController@login')->name('login');
+Route::get('/','HomeController@index')->name('login');
+Route::post('login','HomeController@store')->name('login');
 
 // 贷款
 Route::get('loan','LoanController@loanPage')->name('loan');

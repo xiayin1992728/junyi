@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class VerifyController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function verifyPage ()
     {
     	return view('verify.verify');
