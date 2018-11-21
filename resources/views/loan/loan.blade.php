@@ -265,7 +265,7 @@
             }
             //设置拖动后小方块的left值
             minDiv.style.left = minDiv_left + "px";
-            console.log(minDiv_left);
+            //console.log(minDiv_left);
             //msg.innerText = parseInt((minDiv_left / (lineDiv.offsetWidth - 15)) * 100);
             vals.innerText = parseInt((minDiv_left / (lineDiv.offsetWidth - 15)) * 100000);
             left.style.width = parseInt((minDiv_left / (lineDiv.offsetWidth - 15)) * 100) + '%';
@@ -273,7 +273,7 @@
     }
 
     var end = function(e) {
-    	console.log("鼠标弹起")
+    	//console.log("鼠标弹起")
     	ifBool = false;
     }
           //鼠标按下方块
