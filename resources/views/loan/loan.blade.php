@@ -189,20 +189,16 @@
 			<div class="left"></div>
 			<div class="icon">
 				<div class="tishikuang">
-					50000	
+					10000	
 				</div>
 			</div>
-		</div>
-
-		<div class="shuru">
-			<input type="button" value="输入金额">
 		</div>
 	</div>
 
 	<div class="biaoshi">
-		<div>500</div>
-		<div>5万</div>
-		<div>最高10万</div>
+		<div>1000</div>
+		<div>10000</div>
+		<div>20000</div>
 	</div>
 </div>
 
@@ -246,8 +242,8 @@
         	ifBool = true;
         	console.log("鼠标按下")
         }
+
         var move = function(e) {
-        	console.log("鼠标拖动")
         	if(ifBool) {
             if(!e.touches) {  //兼容移动端
             	var x = e.clientX;
@@ -265,15 +261,16 @@
             }
             //设置拖动后小方块的left值
             minDiv.style.left = minDiv_left + "px";
-            console.log(minDiv_left);
-            //msg.innerText = parseInt((minDiv_left / (lineDiv.offsetWidth - 15)) * 100);
-            vals.innerText = parseInt((minDiv_left / (lineDiv.offsetWidth - 15)) * 100000);
+
+            let moeny = parseInt((minDiv_left / (lineDiv.offsetWidth - 15)) * 100);
+            if (moeny % 5 == 0 && moeny!= 0) {
+            	vals.innerText = moeny*200;
+            }
             left.style.width = parseInt((minDiv_left / (lineDiv.offsetWidth - 15)) * 100) + '%';
         }
     }
 
     var end = function(e) {
-    	console.log("鼠标弹起")
     	ifBool = false;
     }
           //鼠标按下方块
