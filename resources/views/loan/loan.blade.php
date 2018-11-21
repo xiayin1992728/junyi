@@ -261,11 +261,11 @@
             }
             //设置拖动后小方块的left值
             minDiv.style.left = minDiv_left + "px";
-
             let moeny = parseInt((minDiv_left / (lineDiv.offsetWidth - 15)) * 100);
             if (moeny % 5 == 0 && moeny!= 0) {
             	vals.innerText = moeny*200;
             }
+
             left.style.width = parseInt((minDiv_left / (lineDiv.offsetWidth - 15)) * 100) + '%';
         }
     }
