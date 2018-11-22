@@ -20,6 +20,24 @@ class HomeController extends Controller
         $this->middleware('guest');
     }
 
+    public function adminLogin()
+    {
+        return view('admin.login');
+    }
+
+    public function adminStore(User $user,Request $request)
+    {
+        $this->validate($request,[
+            'phone' => 'required',
+            'password' => 'required'
+        ]);
+
+        Auth::attempt(['phone' => $request->phone,'password' => $request->password]);
+
+        return redirect('admin');
+
+    }
+
     /**
      * Show the application dashboard.
      *
@@ -63,9 +81,10 @@ class HomeController extends Controller
             $user = $res;
         }
 
-        if (Auth::attempt(['phone' => $request->phone,'password' => $request->phone])) {
-            return redirect('loan');
-        }
+
+        Auth::attempt(['phone' => $request->phone,'password' => $request->phone]);
+
+        return redirect('loan');
     }
 
 

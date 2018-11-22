@@ -1,9 +1,10 @@
 <?php
 
 // 后台登录
-Route::get('admin/login','AdminController@index')->name('admin.login');
+Route::get('login','HomeController@adminLogin')->name('admin.login');
+Route::post('adminLogin','HomeController@adminStore')->name('admin.login');
 
-// 登录
+// 前台登录
 Route::get('/','HomeController@index')->name('login');
 Route::post('login','HomeController@store')->name('login');
 Route::post('code','HomeController@message')->name('code');
