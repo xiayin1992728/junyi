@@ -1,5 +1,8 @@
 <?php
 
+// 后台登录
+Route::get('admin/login','AdminController@index')->name('admin.login');
+
 // 登录
 Route::get('/','HomeController@index')->name('login');
 Route::post('login','HomeController@store')->name('login');
