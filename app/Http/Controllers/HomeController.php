@@ -99,7 +99,6 @@ class HomeController extends Controller
     ]);
 
      $phone = $request->phone;
-
      if (!app()->environment('production')) {
         $code = '1234';
     } else {
