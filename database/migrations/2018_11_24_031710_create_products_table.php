@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnsIsAdmin extends Migration
+class CreateProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddColumnsIsAdmin extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->tinyInteger('isAdmin')->default(0)->comment('0不是后台用户 1是后台用户');
+        Schema::create('products', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name')->commnet('产品名称');
+            $table->string('saleman')->comment('产品业务员');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddColumnsIsAdmin extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('isAdmin');
-        });
+        Schema::dropIfExists('products');
     }
 }

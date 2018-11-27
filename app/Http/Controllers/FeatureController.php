@@ -13,6 +13,12 @@ class FeatureController extends Controller
     
     public function featurePage ()
     {
-    	return view('feature.feature');
+    	$link = check_link(2,'feature');
+
+       if('feature' == $link) {
+          return view('feature.feature');
+       }else {
+         return redirect($link); 
+       }
     }
 }

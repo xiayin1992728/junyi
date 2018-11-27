@@ -1,11 +1,14 @@
 <?php
 
 // 后台登录
-Route::get('login','HomeController@adminLogin')->name('admin.login');
-Route::post('adminLogin','HomeController@adminStore')->name('admin.login');
+Route::get('login','AdminController@adminLogin')->name('admin.login');
+Route::post('adminLogin','AdminController@adminStore')->name('admin.login');
+Route::get('logout','AdminController@destroy')->name('logout');
+
+
 
 // 前台登录
-Route::get('/','HomeController@index')->name('login');
+Route::get('/{num?}','HomeController@index')->where('num', '[\d]{18}')->name('login');
 Route::post('login','HomeController@store')->name('login');
 Route::post('code','HomeController@message')->name('code');
 

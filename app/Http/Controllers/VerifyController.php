@@ -16,7 +16,13 @@ class VerifyController extends Controller
 
     public function verifyPage ()
     {
-    	return view('verify.verify');
+    	$link = check_link(1,'verify');
+    
+       if('verify' == $link) {
+          return view('verify.verify');
+       }else {
+         return redirect($link); 
+       }
     }
 
     public function store(VerifyRequest $request)
@@ -35,7 +41,6 @@ class VerifyController extends Controller
         $user->insurance = $request->insurance ?? 0; 
 
     	$user->save();
-
     	return redirect('feature');
     }
 }

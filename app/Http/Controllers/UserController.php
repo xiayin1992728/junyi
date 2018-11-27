@@ -13,6 +13,11 @@ class UserController extends Controller
 
     public function userPage ()
     {
-    	return view('user.user');
+    	$link = check_link(6,'user');
+       if('user' == $link) {
+          return view('user.user');
+       }else {
+         return redirect($link); 
+       }
     }
 }

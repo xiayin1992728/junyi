@@ -13,6 +13,11 @@ class FindController extends Controller
     
     public function findPage ()
     {
-    	return view('find.find');
+    	$link = check_link(5,'find');
+       if('find' == $link) {
+          return view('find.find');
+       }else {
+         return redirect($link); 
+       }
     }
 }

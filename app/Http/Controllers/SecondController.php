@@ -14,6 +14,11 @@ class SecondController extends Controller
 
     public function secondPage ()
     {
-    	return view('second.second');
+    	$link = check_link(4,'second');
+       if('second' == $link) {
+          return view('second.second');
+       }else {
+         return redirect($link); 
+       }
     }
 }

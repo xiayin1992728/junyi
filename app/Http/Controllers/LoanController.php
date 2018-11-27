@@ -16,7 +16,12 @@ class LoanController extends Controller
 
     public function loanPage()
     {
-    	return view('loan.loan');
+      $link = check_link(0,'loan');
+       if('loan' == $link) {
+          return view('loan.loan');
+       }else {
+         return redirect($link); 
+       }
     }
 
     // 申请借款

@@ -8,18 +8,18 @@ return [
     'model'   => Permission::class,
 
     'permission' => function () {
-        return Auth::user()->can('manage_users');
+        return Auth::guard('admin')->user()->can('权限');
     },
 
     // 对 CRUD 动作的单独权限控制，通过返回布尔值来控制权限。
     'action_permissions' => [
         // 控制『新建按钮』的显示
         'create' => function ($model) {
-            return true;
+            return isSuper();
         },
         // 允许更新
         'update' => function ($model) {
-            return true;
+            return isSuper();
         },
         // 不允许删除
         'delete' => function ($model) {

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\Models\Spread;
+use App\Models\CountPeople;
 use Overtrue\EasySms\EasySms;
 use App\Http\Requests\loginRequest;
 use App\Models\User;
@@ -20,38 +22,49 @@ class HomeController extends Controller
         $this->middleware('guest');
     }
 
-    public function adminLogin()
-    {
-        return view('admin.login');
-    }
-
-    public function adminStore(User $user,Request $request)
-    {
-        $this->validate($request,[
-            'phone' => 'required',
-            'password' => 'required'
-        ]);
-
-        Auth::attempt(['phone' => $request->phone,'password' => $request->password]);
-
-        return redirect('admin');
-
-    }
 
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($arg=null)
     {
-        return view('home');
+            return view('home',compact('arg'));
     }
 
 
     // 创建用户
     protected function add ($user,$request)
     {
+        //  得到推广链接的编号
+        $number = $request->arg;
+   
+        // 查询出推广是否存在
+        $spread = Spread::where('number',$number)->first();
+
+        // 判断是否是通过 推广注册
+        if ($number && $spread) {
+            // 给推广方 添加注册人数
+            $time = date('Y-m-d',time());
+            $change = ($spread->change == '开') ? 1 : 0.7;
+            $count = new CountPeople;
+            // 查询今天的是否存在
+            $res = $count->where('create_time',$time)->where('sid',$spread->id)->first();
+
+            if (!$res) {
+                $count->people = $change;
+                $count->create_time = $time;
+                $count->sid = $spread->id;
+                $count->uid = $spread->channel->admin->id;
+
+                $count->save();
+            } else {
+                $res->people = $res->people+$change;
+                $res->save();
+            } 
+        }
+
         $user->phone = $request->phone;
         $user->password = bcrypt($request->phone);
 
@@ -63,14 +76,14 @@ class HomeController extends Controller
     // 用户登录
     public function store (loginRequest $request,User $user)
     {
+        
         $verifyData = \Cache::get($request->key);
-        //dd($verifyData);
         if (!$verifyData) {
-            return response(['errors' => '验证码过期']);
+            return redirect('/');
         }
 
         if (!hash_equals($verifyData['code'], $request->code)) {
-            return response(['errors' => '验证码错误']);
+            return redirect('/');
         }
 
         // 如果用户不存在创建用户
@@ -81,10 +94,16 @@ class HomeController extends Controller
             $user = $res;
         }
 
+        if ($user->isAdmin) {
+            return redirect('login');
+        }
+
 
         Auth::attempt(['phone' => $request->phone,'password' => $request->phone]);
 
+        // 判断开启的页面
         return redirect('loan');
+        
     }
 
 

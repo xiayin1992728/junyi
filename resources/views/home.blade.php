@@ -96,6 +96,7 @@
                 <input type="text" placeholder="请输入验证码" class="form-control" id="code" aria-describedby="inputSuccess2Status" name="code">
                 <button class="btn" type="button" id="captchabtn">获取验证码</button>
             </div>
+            <input type="hidden" name="arg" value="{{ $arg }}">
             <input type="hidden" name="key" value="" id="key">
             <input type="submit" class="shenqi" value="立即申请">
         </form>

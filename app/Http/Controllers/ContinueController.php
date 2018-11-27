@@ -13,6 +13,11 @@ class ContinueController extends Controller
     
     public function continuePage ()
     {
-    	return view('continue.continue');
+    	$link = check_link(3,'continue');
+       if('continue' == $link) {
+          return view('continue.continue');
+       }else {
+         return redirect($link); 
+       }
     }
 }
