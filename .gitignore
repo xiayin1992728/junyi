@@ -3,6 +3,7 @@
 /public/storage
 /storage/*.key
 /vendor
+!/vendor/summerblue/administrator/src
 /.idea
 /.vagrant
 Homestead.json
