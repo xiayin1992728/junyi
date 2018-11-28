@@ -30,7 +30,18 @@ class loginRequest extends FormRequest
             ],
             'captcha' => 'required|captcha',
             'code' => 'required|numeric',
-            'key' => 'required'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'phone.required' => '手机号不能为空',
+            'phone.regex' => '手机格式错误',
+            'captcha.required' => '验证码不能为空',
+            'captcha.captcha' => '图形验证码错误',
+            'code.required' => '短信验证码不能为空',
+            'code.captcha' => '短信验证码输入数字'
         ];
     }
 }

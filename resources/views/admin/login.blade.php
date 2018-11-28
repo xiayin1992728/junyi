@@ -3,6 +3,7 @@
 <head>
 	<title>后台登录</title>
 	<link rel="stylesheet" type="text/css" href="/css/app.css">
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
 	<style type="text/css">
 		body {
 			height:600px;
