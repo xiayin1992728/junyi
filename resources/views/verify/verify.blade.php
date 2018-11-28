@@ -186,7 +186,7 @@
 					</div>
 				@else
 					<div>
-						<input type="text" class="inp" placeholder="请输入姓名" class="noerror" name="name" value="">
+						<input type="text" class="inp" placeholder="请输入姓名" class="noerror" name="name" value="{{ old('name') }}">
 					</div>
 			
 					<div class="">
@@ -206,7 +206,7 @@
 					</div>
 				@else
 					<div>
-						<input type="text" class="inp" placeholder="请输入身份证号码" name="idcard" value="">
+						<input type="text" class="inp" placeholder="请输入身份证号码" name="idcard" value="{{ old('idcard') }}">
 					</div>
 			
 					<div class="">
@@ -225,7 +225,7 @@
 					</div>
 				@else
 					<div>
-						<input type="text" class="inp" placeholder="请输入芝麻分" name="credit" value="" maxlength="4">
+						<input type="text" class="inp" placeholder="请输入芝麻分" name="credit" value="{{ old('credit') }}" maxlength="4">
 					</div>
 			
 					<div class="">
@@ -245,7 +245,7 @@
 					</div>
 				@else
 					<div>
-						<input type="text" class="inp" placeholder="请输入QQ号" name="qq" value="">
+						<input type="text" class="inp" placeholder="请输入QQ号" name="qq" value="{{ old('qq') }}">
 					</div>
 			
 					<div class="">
@@ -265,7 +265,7 @@
 					</div>
 				@else
 					<div>
-						<input type="text" class="inp" placeholder="请输入微信号" name="weixin" value="">
+						<input type="text" class="inp" placeholder="请输入微信号" name="weixin" value="{{ old('weixin') }}">
 					</div>
 			
 					<div class="">
