@@ -33,7 +33,7 @@ class VerifyRequest extends FormRequest
               'required',
               'regex:/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/'
             ],
-            'credit' => 'required|numeric|max:4',
+            'credit' => 'required|numeric|max:1000',
             'qq' => [
                 'required',
                 'regex:/^[1-9][0-9]{4,12}$/'
@@ -51,6 +51,7 @@ class VerifyRequest extends FormRequest
             'idcard.regex' => '身份证格式错误',
             'credit.required' => '芝麻分不能为空',
             'credit.numeric' => '芝麻分格式错误',
+            'credit.max' => '芝麻分不能大于1000',
             'qq.required' => 'QQ不能为空',
             'weixin.required' => '微信不能为空'
         ];
