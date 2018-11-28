@@ -31,20 +31,9 @@
 	margin-top:10px;
 	display: flex;
 	flex-direction: row;
+	position: relative;
 }
 
-.wai input {
-	border:0px;
-	outline: none;
-	width:80vw;
-	height: 6vw;
-	padding-left: 15px;
-	letter-spacing: 0.1em;
-}
-
-input::-webkit-input-placeholder {
-	color: #CFCFCF;
-}
 
 .wai .icon {
 	width:9vw;
@@ -128,6 +117,41 @@ input::-webkit-input-placeholder {
 	height: 6vh;
 }
 
+.inp::-webkit-input-placeholder {
+	color:#CFCFCF;
+}
+
+.inperrors::-webkit-input-placeholder {
+	color:red;
+}
+
+
+.wai input {
+	border: 0;
+	outline: none;
+	width:70vw;
+	height: 6vw;
+	padding-left: 15px;
+	letter-spacing: 0.1em;
+}
+
+
+.error {
+	width:9vw;
+	height:6vw;
+	background: url('/images/error.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.yes {
+	width:9vw;
+	height:6vw;
+	background: url('/images/yes.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
 .bgk {
 	background: url('/images/home/verify/background.png');
 	background-size: 100% 100%;
@@ -152,33 +176,102 @@ input::-webkit-input-placeholder {
 		<div class="info">
 			<div class="wai name">
 				<div class="icon"></div>
-				<div>
-					<input type="text" placeholder="请输入你的姓名" name="name" value="{{ old('name') }}">
-				</div>
+				@if ($errors->has('name'))
+					<div>
+						<input type="text" class="inperrors" placeholder="{{ $errors->first('name') }}" name="name" value="">
+					</div>
+				
+					<div class="error">
+					
+					</div>
+				@else
+					<div>
+						<input type="text" class="inp" placeholder="请输入姓名" class="noerror" name="name" value="">
+					</div>
+			
+					<div class="">
+					
+					</div>
+				@endif
 			</div>
 			<div class="wai idCard">
 				<div class="icon"></div>
-				<div>
-					<input type="text" placeholder="请输入你的身份证号" name="idcard" value="{{ old('idcard') }}">
-				</div>
+				@if ($errors->has('idcard'))
+					<div>
+						<input type="text" class="inperrors" placeholder="{{ $errors->first('idcard') }}" name="idcard" value="">
+					</div>
+				
+					<div class="error">
+					
+					</div>
+				@else
+					<div>
+						<input type="text" class="inp" placeholder="请输入身份证号码" name="idcard" value="">
+					</div>
+			
+					<div class="">
+					
+					</div>
+				@endif
 			</div>
 			<div class="wai zhimafen">
 				<div class="icon"></div>
-				<div>
-					<input type="text" placeholder="请输入芝麻分" name="credit" value="{{ old('credit') }}">
-				</div>
+				@if ($errors->has('credit'))
+					<div>
+						<input type="text" class="inperrors" placeholder="{{ $errors->first('credit') }}" maxlength="4" name="credit" value="">					</div>
+				
+					<div class="error">
+					
+					</div>
+				@else
+					<div>
+						<input type="text" class="inp" placeholder="请输入芝麻分" name="credit" value="" maxlength="4">
+					</div>
+			
+					<div class="">
+					
+					</div>
+				@endif
 			</div>
 			<div class="wai qq">
 				<div class="icon"></div>
-				<div>
-					<input type="text" placeholder="请输入 QQ 号" name="qq" value="{{ old('qq') }}">
-				</div>
+				@if ($errors->has('qq'))
+					<div>
+						<input type="text" class="inperrors" placeholder="{{ $errors->first('qq') }}" name="qq" value="">
+					</div>
+				
+					<div class="error">
+					
+					</div>
+				@else
+					<div>
+						<input type="text" class="inp" placeholder="请输入QQ号" name="qq" value="">
+					</div>
+			
+					<div class="">
+					
+					</div>
+				@endif
 			</div>
 			<div class="wai weixin">
 				<div class="icon"></div>
-				<div>
-					<input type="text" placeholder="请输入你的微信号" name="weixin" value="{{ old('weixin') }}">
-				</div>
+				@if ($errors->has('weixin'))
+					<div>
+						<input type="text" class="inperrors" placeholder="{{ $errors->first('weixin') }}" name="weixin" value="">
+					</div>
+				
+					<div class="error">
+					
+					</div>
+				@else
+					<div>
+						<input type="text" class="inp" placeholder="请输入微信号" name="weixin" value="">
+					</div>
+			
+					<div class="">
+					
+					</div>
+				@endif
 			</div>
 		</div>
 
