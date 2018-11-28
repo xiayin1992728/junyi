@@ -30,7 +30,7 @@ class HomeController extends Controller
      */
     public function index($arg=null)
     {
-            return view('home',compact('arg'));
+        return view('home',compact('arg'));
     }
 
 

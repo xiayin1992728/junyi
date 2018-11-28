@@ -40,7 +40,10 @@ return [
             'title' => 'ID',
         ],
         'people' => [
-            'title' => '注册人数',  
+            'title' => '注册人数', 
+            'output' => function ($value,$model) {
+                return floor($model->people);
+            } 
         ],
    
         'product' => [

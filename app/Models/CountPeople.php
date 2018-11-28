@@ -23,18 +23,8 @@ class CountPeople extends Model
     	return $this->belongsTo(Spread::class,'sid','id');
     }
 
-    public function getPeopleAttribute($value)
-    {
-        return floor($value);
-    }
-
-    public function getOwn($user)
-    {
-
-        if ($user->hasRole('超级管理员') || $user->hasRole('管理员')) {
-            return true;
-        } else {
-
-        }
-    }
+    // public function getPeopleAttribute($value)
+    // {
+    //     return floor($value);
+    // }
 }
