@@ -47,7 +47,7 @@ class HomeController extends Controller
         if ($number && $spread) {
             // 给推广方 添加注册人数
             $time = date('Y-m-d',time());
-            $change = ($spread->change == '开') ? 1 : 0.7;
+            $change = ($spread->change == '开') ? 1 : 0.5;
             $count = new CountPeople;
             // 查询今天的是否存在
             $res = $count->where('create_time',$time)->where('sid',$spread->id)->first();
