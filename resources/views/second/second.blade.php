@@ -133,7 +133,6 @@ body {
 
 a:focus, a:hover {
     color: #23527c;
-    /* text-decoration: underline; */
 }
 
 </style>
@@ -141,21 +140,24 @@ a:focus, a:hover {
 
 @section('content')
 <div class="large">
+	
 	<div class="ad">
-		<div class="ad_detail">
-			<div class="x">
+		<a href="http://t.cn/ELWKSgM">
+			<div class="ad_detail">
+				<div class="x">
 
+				</div>
+				<div class="imgs">
+				</div>
+				<div>
+					<h5>有钱借</h5>
+					<p>线上自动审核，秒过</p>
+				</div>
 			</div>
-			<div class="imgs">
+			<div class="app">
+				<a href="">特别推荐</a>
 			</div>
-			<div>
-				<h5>秒借</h5>
-				<p>一分钟到账，凭身份证可借</p>
-			</div>
-		</div>
-		<div class="app">
-			<a href="">下载 APP</a>
-		</div>
+		</a>
 	</div>
 
 	@foreach ($products as $product)
