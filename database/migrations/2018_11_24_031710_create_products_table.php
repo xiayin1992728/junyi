@@ -16,6 +16,11 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->commnet('产品名称');
+            $table->string('logo')->comment('产品logo');
+            $table->decimal('maxs')->comment('最大额度');
+            $table->string('tag')->comment('标签');
+            $table->char('longtimes',20)->comment('借款期限');
+            $table->string('link')->comment('产品链接');
             $table->string('saleman')->comment('产品业务员');
             $table->timestamps();
         });
