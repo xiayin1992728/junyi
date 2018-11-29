@@ -87,11 +87,14 @@ body {
 }
 
 .top .left i {
-	background: url('/images/home/second/miao.jpg');
-	background-size: 100% 100%;
-	background-repeat: no-repeat;
 	width: 50px;
 	height: 50px;
+}
+
+.top .left i img {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
 }
 
 .top .left div {
@@ -128,6 +131,11 @@ body {
 	color: #AEAEAE;
 }
 
+a:focus, a:hover {
+    color: #23527c;
+    /* text-decoration: underline; */
+}
+
 </style>
 @endsection
 
@@ -150,100 +158,28 @@ body {
 		</div>
 	</div>
 
-	<div class="miao_list">
-		<div class="top">
-			<div class="left">
-				<i></i>
-				<div>
-					<p>秒借</p>
-					<span><strong>6000</strong>元</span>
+	@foreach ($products as $product)
+		<a href="{{ $product->link }}">
+			<div class="miao_list">
+				<div class="top">
+					<div class="left">
+						<i><img src="{{ env('APP_URL').'/uploads/products/'.$product->logo }}"></i>
+						<div>
+							<p>{{ $product->name }}</p>
+							<span><strong>{{ $product->maxs }}</strong>元</span>
+						</div>
+					</div>
+					<div class="right">
+						<button class="btn">立即借款</button>
+						<p>借款期限：{{ $product->longtimes }} 天</p>
+					</div>
+				</div>
+				<div class="buttom">
+					<p>{{ $product->tag }}</p>
 				</div>
 			</div>
-			<div class="right">
-				<button class="btn">立即借款</button>
-				<p>借款期限：7 天</p>
-			</div>
-		</div>
-		<div class="buttom">
-			<p>0 门槛，1 分钟到账</p>
-		</div>
-	</div>	
-
-	<div class="miao_list">
-		<div class="top">
-			<div class="left">
-				<i></i>
-				<div>
-					<p>秒借</p>
-					<span><strong>6000</strong>元</span>
-				</div>
-			</div>
-			<div class="right">
-				<button class="btn">立即借款</button>
-				<p>借款期限：7 天</p>
-			</div>
-		</div>
-		<div class="buttom">
-			<p>0 门槛，1 分钟到账</p>
-		</div>
-	</div>
-
-	<div class="miao_list">
-		<div class="top">
-			<div class="left">
-				<i></i>
-				<div>
-					<p>秒借</p>
-					<span><strong>6000</strong>元</span>
-				</div>
-			</div>
-			<div class="right">
-				<button class="btn">立即借款</button>
-				<p>借款期限：7 天</p>
-			</div>
-		</div>
-		<div class="buttom">
-			<p>0 门槛，1 分钟到账</p>
-		</div>
-	</div>
-
-	<div class="miao_list">
-		<div class="top">
-			<div class="left">
-				<i></i>
-				<div>
-					<p>秒借</p>
-					<span><strong>6000</strong>元</span>
-				</div>
-			</div>
-			<div class="right">
-				<button class="btn">立即借款</button>
-				<p>借款期限：7 天</p>
-			</div>
-		</div>
-		<div class="buttom">
-			<p>0 门槛，1 分钟到账</p>
-		</div>
-	</div>
-
-	<div class="miao_list">
-		<div class="top">
-			<div class="left">
-				<i></i>
-				<div>
-					<p>秒借</p>
-					<span><strong>6000</strong>元</span>
-				</div>
-			</div>
-			<div class="right">
-				<button class="btn">立即借款</button>
-				<p>借款期限：7 天</p>
-			</div>
-		</div>
-		<div class="buttom">
-			<p>0 门槛，1 分钟到账</p>
-		</div>
-	</div>
+		</a>	
+	@endforeach
 </div>
 	@include('layouts._menu')
 @endsection

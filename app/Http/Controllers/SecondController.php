@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class SecondController extends Controller
@@ -12,11 +13,12 @@ class SecondController extends Controller
         $this->middleware('auth');
     }
 
-    public function secondPage ()
+    public function secondPage (Product $product)
     {
     	$link = check_link(4,'second');
        if('second' == $link) {
-          return view('second.second');
+          $products = $product->get();
+          return view('second.second',compact('products'));
        }else {
          return redirect($link); 
        }
