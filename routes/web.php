@@ -1,11 +1,9 @@
 <?php
 
-// 后台登录
-Route::get('login','AdminController@adminLogin')->name('admin.login');
+    // 后台登录
+Route::get('login','AdminController@adminLogin')->name('admin.login')->middleware('admin');
 Route::post('adminLogin','AdminController@adminStore')->name('admin.login');
 Route::get('logout','AdminController@destroy')->name('logout');
-
-
 
 // 前台登录
 Route::get('/{num?}','HomeController@index')->where('num', '[\d]{18}')->name('login');

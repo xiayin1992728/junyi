@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','秒借')
+@section('title','为你推荐')
 
 @section('css')
 <style type="text/css">
@@ -141,24 +141,25 @@ a:focus, a:hover {
 @section('content')
 <div class="large">
 	
-	<div class="ad">
-		<a href="http://t.cn/ELWKSgM">
+<!-- 	<div class="ad">
 			<div class="ad_detail">
 				<div class="x">
 
 				</div>
-				<div class="imgs">
-				</div>
-				<div>
-					<h5>有钱借</h5>
-					<p>线上自动审核，秒过</p>
-				</div>
+					<a href="http://t.cn/ELWKSgM">
+					<img class="imgs" src="http://www.vipxia.cn/uploads/products/jLAcBuH14fc4TAetj4PV.jpg">
+					</a>
+					<a href="http://t.cn/ELWKSgM">
+					<div>
+						<h5>有钱借</h5>
+						<p>线上自动审核，秒过</p>
+					</div>
+					</a>
 			</div>
 			<div class="app">
-				<a href="">特别推荐</a>
+				<a href="http://t.cn/ELWKSgM">特别推荐</a>
 			</div>
-		</a>
-	</div>
+	</div> -->
 
 	@foreach ($products as $product)
 		<a href="{{ $product->link }}">
@@ -187,5 +188,9 @@ a:focus, a:hover {
 @endsection
 
 @section('script')
-
+<script type="text/javascript">
+	$('.x').on('click',function () {
+		$('.ad').hide();
+	})
+</script>
 @endsection

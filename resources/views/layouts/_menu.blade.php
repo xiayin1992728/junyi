@@ -2,7 +2,7 @@
 	<a href="{{ route('second') }}">
 		<div class="backimgs {{ if_route('second') ? 'jiekuanactive' : 'jiekuan'}}">
 			<div class="icon"></div>
-			<span>我要借款</span>
+			<span>为你推荐</span>
 		</div>
 	</a>
 	<a href="{{ route('find') }}">

@@ -19,6 +19,10 @@ class VerifyController extends Controller
     	$link = check_link(1,'verify');
     
        if('verify' == $link) {
+          // 如果已经填写过资料 跳过该页面
+          if(User::where('id',Auth::guard('web')->id())->first()->idcard) {
+            return redirect('feature');
+          }  
           return view('verify.verify');
        }else {
          return redirect($link); 

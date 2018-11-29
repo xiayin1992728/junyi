@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->char('longtimes',20)->comment('借款期限');
             $table->string('link')->comment('产品链接');
             $table->string('saleman')->comment('产品业务员');
+            $table->tinyInteger('types')->comment('产品分类 0内部产品 1外部产品');
             $table->timestamps();
         });
     }
