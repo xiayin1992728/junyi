@@ -55,6 +55,9 @@ return [
         }
 
     ],
+    'types' => [
+        'title' => '产品类型'
+    ],
     'link' => [
         'title' => '产品链接',
         'type' => 'text'
@@ -93,6 +96,13 @@ return [
         'title' => '最大额度',
         'type' => 'text',
     ],
+    'types' => [
+        'title' => '产品类型',
+        'type' => 'enum',
+        'options' => [
+            '内部产品','外部产品'
+        ]
+    ],
     'logo' => [
         'title' =>'产品logo',
         'type' => 'image',
@@ -125,4 +135,5 @@ return [
     'name.unique' => '产品已存在',
     'saleman.required' => '业务员不能为空'
 ],
+
 ];

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class UserController extends Controller
 {
@@ -19,5 +20,11 @@ class UserController extends Controller
        }else {
          return redirect($link); 
        }
+    }
+
+    public function destroy()
+    {
+      Auth::guard('web')->logout();
+      return redirect('/');
     }
 }

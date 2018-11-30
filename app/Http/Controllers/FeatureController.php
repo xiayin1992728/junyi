@@ -6,11 +6,6 @@ use Illuminate\Http\Request;
 
 class FeatureController extends Controller
 {
-	public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
     public function featurePage ()
     {
     	$link = check_link(2,'feature');

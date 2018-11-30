@@ -15,8 +15,8 @@ class CreateSpreadsTable extends Migration
     {
         Schema::create('spreads', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('cid')->comment('渠道外键');
-            $table->integer('pid')->comment('产品外键');
+            $table->integer('cid')->unsigned()->comment('渠道外键');
+            $table->integer('pid')->unsigned()->comment('产品外键');
             $table->string('number')->default(0)->comment('流水号');
             $table->char('change','15')->comment('链接开关');
             $table->string('link')->default(0)->comment('推广链接');

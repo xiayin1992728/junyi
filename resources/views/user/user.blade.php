@@ -81,7 +81,7 @@
 
 .buttom {
 	margin-top: 15vh;
-    padding: 5vw;
+	padding: 5vw;
 }
 
 .tiao_list {
@@ -166,11 +166,38 @@
 			</div>
 			<span></span>
 		</div>
+
+		<div class="tiao_list" id="logout">
+			<div class="tiao_name">
+				<div></div>
+				<strong>退出</strong>
+			</div>
+			<span></span>
+		</div>
 	</div>
 </div>
-	@include('layouts._menu')
+@include('layouts._menu')
 @endsection
 
 @section('script')
-
+<script type="text/javascript">
+	$.ajaxSetup({
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		}
+	});
+	$('#logout').on('click',function(){
+		$.ajax({
+			url:"{{ route('homeLogout') }}",
+			type:'POST',
+			data:{'_method':'DELETE'},
+			success:function(res) {
+				console.log(res);
+				if (res.code == 200) {
+					window.location.href = "/";
+				}
+			}
+		})
+	})
+</script>
 @endsection

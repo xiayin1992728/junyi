@@ -8,12 +8,7 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-	public function __construct()
-	{
-		$this->middleware('guest');
-	}
-
-     public function adminLogin()
+    public function adminLogin()
     {
 
         return view('admin.login');
@@ -33,8 +28,8 @@ class AdminController extends Controller
 
     public function destroy()
     {
-       Auth::guard('admin')->logout();
-        return redirect('login');
-
+        dd('a');
+       // Auth::logout();
+       // return redirect('login');
     }
 }

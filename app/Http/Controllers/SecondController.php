@@ -17,7 +17,7 @@ class SecondController extends Controller
     {
     	$link = check_link(4,'second');
        if('second' == $link) {
-          $products = $product->get();
+          $products = $product->where('types','外部产品')->get();
           return view('second.second',compact('products'));
        }else {
          return redirect($link); 

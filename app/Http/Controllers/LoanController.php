@@ -9,11 +9,6 @@ use Illuminate\Http\Request;
 
 class LoanController extends Controller
 {
-  public function __construct()
-  {
-    $this->middleware('auth');
-  }
-
     public function loanPage()
     {
       $link = check_link(0,'loan');
