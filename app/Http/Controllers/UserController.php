@@ -25,6 +25,6 @@ class UserController extends Controller
     public function destroy()
     {
       Auth::guard('web')->logout();
-      return redirect('/');
+      return ['code' => 200];
     }
 }

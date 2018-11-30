@@ -28,8 +28,8 @@ class AdminController extends Controller
 
     public function destroy()
     {
-        dd('a');
-       // Auth::logout();
-       // return redirect('login');
+        
+        Auth::guard('admin')->logout();
+        return redirect('login');
     }
 }

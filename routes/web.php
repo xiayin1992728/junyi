@@ -3,7 +3,7 @@
     // 后台登录
 Route::get('login','AdminController@adminLogin')->name('admin.login')->middleware('guest');
 Route::post('adminLogin','AdminController@adminStore')->name('admin.login')->middleware('guest');
-Route::delete('logout','AdminController@destroy')->name('logout')->middleware('auth.admin');
+Route::delete('logout','AdminController@destroy')->name('logout')->middleware('auth');
 
 // 前台登录
 Route::get('/{num?}','HomeController@index')->where('num', '[\d]{18}')->name('login')->middleware('guest');
@@ -32,4 +32,5 @@ Route::get('find','FindController@findPage')->name('find')->middleware('auth');
 
 // 我的
 Route::get('user','UserController@userPage')->name('user')->middleware('auth');
+Route::delete('homeLogout','UserController@destroy')->name('homeLogout')->middleware('auth');
 
